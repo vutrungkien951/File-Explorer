@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Study\\WindowExplorers\\WindowExplorers\\WindowExplorers.csproj": {}
+    "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj": {}
   },
   "projects": {
-    "E:\\Study\\WindowExplorers\\WindowExplorers\\WindowExplorers.csproj": {
+    "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Study\\WindowExplorers\\WindowExplorers\\WindowExplorers.csproj",
+        "projectUniqueName": "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
         "projectName": "WindowExplorers",
-        "projectPath": "E:\\Study\\WindowExplorers\\WindowExplorers\\WindowExplorers.csproj",
-        "packagesPath": "C:\\Users\\AMIN\\.nuget\\packages\\",
-        "outputPath": "E:\\Study\\WindowExplorers\\WindowExplorers\\obj\\",
+        "projectPath": "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
+        "packagesPath": "C:\\Users\\vutru\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\AMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vutru\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
