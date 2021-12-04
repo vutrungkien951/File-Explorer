@@ -50,6 +50,7 @@ namespace WindowExplorers
             this.Date = new System.Windows.Forms.ColumnHeader();
             this.Type = new System.Windows.Forms.ColumnHeader();
             this.Size = new System.Windows.Forms.ColumnHeader();
+            this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
             this.imageListSmallIcon = new System.Windows.Forms.ImageList(this.components);
             this.tbSearchBar = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
@@ -82,6 +83,7 @@ namespace WindowExplorers
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(91, 39);
             this.toolStripButton1.Text = "New Folder";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -123,6 +125,7 @@ namespace WindowExplorers
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(64, 39);
             this.toolStripButton6.Text = "Properties";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // btBack
             // 
@@ -209,6 +212,7 @@ namespace WindowExplorers
             this.Type,
             this.Size});
             this.listView.HideSelection = false;
+            this.listView.LargeImageList = this.imageListLargeIcon;
             this.listView.Location = new System.Drawing.Point(200, 70);
             this.listView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView.Name = "listView";
@@ -237,6 +241,13 @@ namespace WindowExplorers
             // Size
             // 
             this.Size.Text = "Size";
+            // 
+            // imageListLargeIcon
+            // 
+            this.imageListLargeIcon.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageListLargeIcon.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListLargeIcon.ImageStream")));
+            this.imageListLargeIcon.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListLargeIcon.Images.SetKeyName(0, "File_Explorer_Icon.png");
             // 
             // imageListSmallIcon
             // 
@@ -307,6 +318,7 @@ namespace WindowExplorers
         private System.Windows.Forms.ColumnHeader Type;
         private System.Windows.Forms.ColumnHeader Size;
         private System.Windows.Forms.ImageList imageListSmallIcon;
+        private System.Windows.Forms.ImageList imageListLargeIcon;
     }
 }
 
