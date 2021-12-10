@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj": {}
+    "K:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj": {
+    "K:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
+        "projectUniqueName": "K:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
         "projectName": "WindowExplorers",
-        "projectPath": "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
+        "projectPath": "K:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
         "packagesPath": "C:\\Users\\vutru\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vutru\\File-Explorer\\WindowExplorers\\obj\\",
+        "outputPath": "K:\\File-Explorer\\WindowExplorers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vutru\\AppData\\Roaming\\NuGet\\NuGet.Config",
