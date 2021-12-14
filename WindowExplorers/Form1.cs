@@ -14,10 +14,12 @@ namespace WindowExplorers
 {
     public partial class Form1 : Form
     {
-
+        private ListViewColumnSorter lvwColumnSorter;
         public Form1()
         {
             InitializeComponent();
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.listView.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,6 +87,7 @@ namespace WindowExplorers
                         item.SubItems.Add(strDate);
                         var stringType = "File Folder";
                         item.SubItems.Add(stringType);
+                        item.SubItems.Add("");
                         item.ImageIndex = 0;
 
                         listView.Items.Add(item);
@@ -116,7 +119,9 @@ namespace WindowExplorers
                         }
 
 
-                        item.SubItems.Add(fileInfo.Length.ToString());
+                        var bytes = fileInfo.Length / 1024;
+                        var size = bytes + " KB";
+                        item.SubItems.Add(size);
 
                         //Add icon 
                         if (!imageListSmallIcon.Images.ContainsKey(fileInfo.Extension))
@@ -198,7 +203,8 @@ namespace WindowExplorers
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-
+            DirectoryInfo di = Directory.CreateDirectory(txtPath.Text);
+            updateListView(txtPath.Text);
         }
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -214,5 +220,30 @@ namespace WindowExplorers
             }
         }
 
+        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.listView.Sort();
+        }
     }
 }
