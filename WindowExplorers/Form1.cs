@@ -15,6 +15,9 @@ namespace WindowExplorers
     public partial class Form1 : Form
     {
         private ListViewColumnSorter lvwColumnSorter;
+        private string[] selectedItems = new string[20];
+        private int count = 0;
+        private string selectedPath;
         public Form1()
         {
             InitializeComponent();
@@ -128,6 +131,7 @@ namespace WindowExplorers
                         {
                             iconForFile = System.Drawing.Icon.ExtractAssociatedIcon(fileInfo.FullName);
                             imageListSmallIcon.Images.Add(fileInfo.Extension, iconForFile);
+                            imageListLargeIcon.Images.Add(fileInfo.Extension, iconForFile);
                         }
                         item.ImageKey = fileInfo.Extension;
 
@@ -200,10 +204,39 @@ namespace WindowExplorers
 
             ShowFileProperties(path);
         }
-
+        private string getDictName(string path, int count = 1)
+        {
+            if(!Directory.Exists(path + "\\New Folder"))
+            {
+                return "New Folder";
+            }
+            else
+            { 
+                var name = "New Folder (" + count + ")";
+                if(!Directory.Exists(path + "\\" + name))
+                {
+                    return name;
+                }
+                else
+                {
+                    return getDictName(path, count++);
+                }
+            }
+        }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            DirectoryInfo di = Directory.CreateDirectory(txtPath.Text);
+            var nameFolder = getDictName(txtPath.Text);
+            var path = txtPath.Text + "\\" + nameFolder;
+            
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+                MessageBox.Show("The folder \\" + nameFolder + " is created!");
+            }
+            else
+            {
+                MessageBox.Show("The folder "+ nameFolder + " can't created");
+            }
             updateListView(txtPath.Text);
         }
 
@@ -244,6 +277,34 @@ namespace WindowExplorers
 
             // Perform the sort with these new sort options.
             this.listView.Sort();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            
+            var path = txtPath.Text;
+            selectedPath = path;
+            count = 0;
+            for(int i=0; i < listView.SelectedItems.Count; i++)
+            {
+                selectedItems[i] = listView.SelectedItems[i].SubItems[0].Text;
+                count++;
+            }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            if(selectedItems.Length > 0)
+            {
+                for(int i=0; i < count; i++)
+                {
+                    var pathFile = selectedPath + @"\" + selectedItems[i];
+                    var newPathFile = txtPath.Text + @"\" + selectedItems[i];
+                    File.Move(pathFile, newPathFile);
+                }
+                updateListView(txtPath.Text);
+            }
+
         }
     }
 }
