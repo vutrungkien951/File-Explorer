@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "K:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
+      "projectUniqueName": "D:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
       "projectName": "WindowExplorers",
-      "projectPath": "K:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
+      "projectPath": "D:\\File-Explorer\\WindowExplorers\\WindowExplorers.csproj",
       "packagesPath": "C:\\Users\\vutru\\.nuget\\packages\\",
-      "outputPath": "K:\\File-Explorer\\WindowExplorers\\obj\\",
+      "outputPath": "D:\\File-Explorer\\WindowExplorers\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vutru\\AppData\\Roaming\\NuGet\\NuGet.Config",

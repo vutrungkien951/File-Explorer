@@ -15,14 +15,18 @@ namespace WindowExplorers
     public partial class Form1 : Form
     {
         private ListViewColumnSorter lvwColumnSorter;
-        private string[] selectedItems = new string[20];
+        private string[] selectedItems = new string[100];
         private int count = 0;
         private string selectedPath;
+        private bool copy = false;
+
+        public static Form1 form1;
         public Form1()
         {
             InitializeComponent();
             lvwColumnSorter = new ListViewColumnSorter();
             this.listView.ListViewItemSorter = lvwColumnSorter;
+            form1 = this;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -39,6 +43,7 @@ namespace WindowExplorers
         {
             string[] drives = Directory.GetLogicalDrives();
             TreeNode node = null;
+            treeView.Nodes.Clear();
             foreach (string drive in drives)
             {
                 node = new TreeNode(drive);
@@ -153,10 +158,9 @@ namespace WindowExplorers
         }
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
             string path = e.Node.FullPath;
             txtPath.Text = path;
-            updateListView(path);
+            updateListView(txtPath.Text);
         }
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
@@ -225,19 +229,14 @@ namespace WindowExplorers
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            var nameFolder = getDictName(txtPath.Text);
-            var path = txtPath.Text + "\\" + nameFolder;
             
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-                MessageBox.Show("The folder \\" + nameFolder + " is created!");
-            }
-            else
-            {
-                MessageBox.Show("The folder "+ nameFolder + " can't created");
-            }
+            FrmCreateFolder fm = new FrmCreateFolder(txtPath.Text);
+            this.Hide();
+            fm.Show();
+            
             updateListView(txtPath.Text);
+            
+
         }
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -279,32 +278,115 @@ namespace WindowExplorers
             this.listView.Sort();
         }
 
+        private static void CopyFilesRecursively(string sourcePath, string targetPath)
+        {
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourcePath))
+            {
+                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+            }
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(sourcePath))
+            {
+                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
+            }
+        }
+
+        private static void MoveFilesRecursively(string sourcePath, string targetPath)
+        {
+            //Now Create all of the directories
+            foreach (string dirPath in Directory.GetDirectories(sourcePath))
+            {
+                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+            }
+
+            //Copy all the files & Replaces any files with the same name
+            foreach (string newPath in Directory.GetFiles(sourcePath))
+            {
+                File.Move(newPath, newPath.Replace(sourcePath, targetPath), true);
+            }
+        }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            
             var path = txtPath.Text;
             selectedPath = path;
             count = 0;
+
             for(int i=0; i < listView.SelectedItems.Count; i++)
             {
                 selectedItems[i] = listView.SelectedItems[i].SubItems[0].Text;
                 count++;
             }
+            copy = false;
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            if(selectedItems.Length > 0)
+            if(!copy)
             {
                 for(int i=0; i < count; i++)
                 {
                     var pathFile = selectedPath + @"\" + selectedItems[i];
                     var newPathFile = txtPath.Text + @"\" + selectedItems[i];
-                    File.Move(pathFile, newPathFile);
+                    if (File.Exists(pathFile))
+                    {
+                        File.Move(pathFile, newPathFile);
+                    }
+                    else
+                    {
+                        Directory.Move(pathFile, newPathFile);
+                    }
+                }
+                updateListView(txtPath.Text);
+                count = 0;
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    var pathFile = selectedPath + @"\" + selectedItems[i];
+                    var newPathFile = txtPath.Text + @"\" + selectedItems[i];
+                    if (File.Exists(pathFile))
+                    {
+                        File.Copy(pathFile, newPathFile, true);
+                    }
+                    else
+                    {
+                        CopyFilesRecursively(pathFile, newPathFile);
+                    }
                 }
                 updateListView(txtPath.Text);
             }
+            InitFolder();
+        }
 
+        private void btOpen_Click(object sender, EventArgs e)
+        {
+            updateListView(txtPath.Text);
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            var path = txtPath.Text;
+            selectedPath = path;
+            count = 0;
+
+            for (int i = 0; i < listView.SelectedItems.Count; i++)
+            {
+                selectedItems[i] = listView.SelectedItems[i].SubItems[0].Text;
+                count++;
+            }
+            copy = true;
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmRename f = new FrmRename();
+            f.Show();
+
+            updateListView(txtPath.Text);
         }
     }
 }
