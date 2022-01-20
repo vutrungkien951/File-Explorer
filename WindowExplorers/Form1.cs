@@ -208,25 +208,7 @@ namespace WindowExplorers
 
             ShowFileProperties(path);
         }
-        private string getDictName(string path, int count = 1)
-        {
-            if(!Directory.Exists(path + "\\New Folder"))
-            {
-                return "New Folder";
-            }
-            else
-            { 
-                var name = "New Folder (" + count + ")";
-                if(!Directory.Exists(path + "\\" + name))
-                {
-                    return name;
-                }
-                else
-                {
-                    return getDictName(path, count++);
-                }
-            }
-        }
+        
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             
