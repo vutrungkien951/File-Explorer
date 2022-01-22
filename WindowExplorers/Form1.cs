@@ -212,12 +212,12 @@ namespace WindowExplorers
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             
-            FrmCreateFolder fm = new FrmCreateFolder(txtPath.Text);
+            FrmCreateFolder f = new FrmCreateFolder(txtPath.Text);
             this.Hide();
-            fm.Show();
-            
-            updateListView(txtPath.Text);
-            
+            if (f.ShowDialog(this) == DialogResult.OK)
+            {
+                updateListView(txtPath.Text);
+            }
 
         }
 
@@ -364,11 +364,37 @@ namespace WindowExplorers
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmRename f = new FrmRename();
-            f.Show();
+            if (listView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select 1 file to rename");
+                return;
+            }
+               
 
-            updateListView(txtPath.Text);
+            this.Hide();
+            var path = txtPath.Text + "\\" + listView.SelectedItems[0].SubItems[0].Text;
+            FrmRename f = new FrmRename(path, txtPath.Text);
+
+            if(f.ShowDialog(this) == DialogResult.OK)
+            {
+                updateListView(txtPath.Text);
+            }
+
+        }
+
+        private void tbSearchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (tbSearchBar.Text.Length == 0)
+            {
+                MessageBox.Show("Enter file to search!");
+                return;
+            }
+            this.Hide();
+            FrmSearch f = new FrmSearch();
+            if(f.ShowDialog(this) == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

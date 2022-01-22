@@ -10,6 +10,9 @@
     <Compile Update="FrmRename.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="test.cs">
       <SubType>Form</SubType>
     </Compile>

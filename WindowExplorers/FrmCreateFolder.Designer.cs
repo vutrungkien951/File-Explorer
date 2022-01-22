@@ -54,6 +54,7 @@ namespace WindowExplorers
             // 
             // btnCreateFolder
             // 
+            this.btnCreateFolder.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnCreateFolder.Location = new System.Drawing.Point(182, 107);
             this.btnCreateFolder.Name = "btnCreateFolder";
             this.btnCreateFolder.Size = new System.Drawing.Size(182, 39);
@@ -74,7 +75,6 @@ namespace WindowExplorers
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Folder";
-            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCreateFolder_FormClosing);
             this.Load += new System.EventHandler(this.FrmCreateFolder_Load);

@@ -34,8 +34,16 @@ namespace WindowExplorers
 
             if (!Directory.Exists(newFolderPath))
             {
-                Directory.CreateDirectory(newFolderPath);
-                MessageBox.Show("The folder \\" + newFolderPath + " is created!");
+                try
+                {
+                    Directory.CreateDirectory(newFolderPath);
+                    MessageBox.Show("The folder \\" + newFolderPath + " is created!");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
                 this.Close();
             }
             else

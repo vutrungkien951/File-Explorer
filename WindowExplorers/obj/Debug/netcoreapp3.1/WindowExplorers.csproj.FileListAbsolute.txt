@@ -72,3 +72,4 @@ D:\File-Explorer\WindowExplorers\obj\Debug\netcoreapp3.1\WindowExplorers.dll
 D:\File-Explorer\WindowExplorers\obj\Debug\netcoreapp3.1\WindowExplorers.pdb
 D:\File-Explorer\WindowExplorers\obj\Debug\netcoreapp3.1\WindowExplorers.genruntimeconfig.cache
 D:\File-Explorer\WindowExplorers\obj\Debug\netcoreapp3.1\WindowExplorers.FrmRename.resources
+D:\File-Explorer\WindowExplorers\obj\Debug\netcoreapp3.1\WindowExplorers.FrmSearch.resources
