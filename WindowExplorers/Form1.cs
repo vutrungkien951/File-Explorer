@@ -21,12 +21,16 @@ namespace WindowExplorers
         private bool copy = false;
 
         public static Form1 form1;
+        public static ImageList listImageSmall;
+        public static ImageList listImageLarge;
         public Form1()
         {
             InitializeComponent();
             lvwColumnSorter = new ListViewColumnSorter();
             this.listView.ListViewItemSorter = lvwColumnSorter;
             form1 = this;
+            listImageSmall = listView.SmallImageList;
+            listImageLarge = listView.LargeImageList;
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -384,17 +388,21 @@ namespace WindowExplorers
 
         private void tbSearchBar_KeyDown(object sender, KeyEventArgs e)
         {
-            if (tbSearchBar.Text.Length == 0)
+            if(e.KeyCode == Keys.Enter)
             {
-                MessageBox.Show("Enter file to search!");
-                return;
+                if (tbSearchBar.Text.Length == 0)
+                {
+                    MessageBox.Show("Enter file to search!");
+                    return;
+                }
+                this.Hide();
+                FrmSearch f = new FrmSearch(tbSearchBar.Text);
+                if (f.ShowDialog(this) == DialogResult.OK)
+                {
+                    updateListView(txtPath.Text);
+                }
             }
-            this.Hide();
-            FrmSearch f = new FrmSearch();
-            if(f.ShowDialog(this) == DialogResult.OK)
-            {
-
-            }
+            
         }
     }
 }
