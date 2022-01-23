@@ -83,12 +83,7 @@ namespace WindowExplorers
             {
                 if (Directory.Exists(currentPath))
                 {
-                    var temp = new DirectoryInfo(currentPath);
-                    if (temp.Name.Contains(text))
-                    {
-                        addFolderToListView(temp);
-                    }
-                    
+
                     foreach (String subFolder in Directory.GetDirectories(currentPath))
                     {
                         DirectoryInfo dic = new DirectoryInfo(subFolder);
@@ -126,10 +121,55 @@ namespace WindowExplorers
                 try
                 {
                     search(drive);
+                    foreach(String subFolder in Directory.GetDirectories(drive))
+                    {
+                        search(subFolder);
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
+            foreach(ListViewItem item in listView.Items)
+            {
+                String type = item.SubItems[2].Text;
+                var pathFile = item.SubItems[4].Text + "\\" + item.SubItems[0].Text;
+
+                if(type == "File Folder")
+                {
+                    if (Directory.Exists(pathFile))
+                    {
+                        try
+                        {
+                            System.IO.Directory.Delete(pathFile, true);
+                        }
+
+                        catch (IOException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    if (File.Exists(pathFile))
+                    {
+                        try
+                        {
+                            File.Delete(pathFile);
+                        }
+                        catch (IOException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            return;
+                        }
+                    }
+
                 }
             }
         }

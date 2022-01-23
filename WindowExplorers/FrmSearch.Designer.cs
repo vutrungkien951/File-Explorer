@@ -35,6 +35,7 @@ namespace WindowExplorers
             this.columnType = new System.Windows.Forms.ColumnHeader();
             this.columnSize = new System.Windows.Forms.ColumnHeader();
             this.columnFolder = new System.Windows.Forms.ColumnHeader();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView
@@ -45,11 +46,11 @@ namespace WindowExplorers
             this.columnType,
             this.columnSize,
             this.columnFolder});
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.Dock = System.Windows.Forms.DockStyle.Top;
             this.listView.HideSelection = false;
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(654, 327);
+            this.listView.Size = new System.Drawing.Size(689, 327);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -79,11 +80,23 @@ namespace WindowExplorers
             this.columnFolder.Text = "Folder";
             this.columnFolder.Width = 130;
             // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnDeleteAll.Location = new System.Drawing.Point(252, 336);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(185, 43);
+            this.btnDeleteAll.TabIndex = 1;
+            this.btnDeleteAll.Text = "Delete all folder and file";
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
             // FrmSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 327);
+            this.ClientSize = new System.Drawing.Size(689, 388);
+            this.Controls.Add(this.btnDeleteAll);
             this.Controls.Add(this.listView);
             this.Name = "FrmSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -102,5 +115,6 @@ namespace WindowExplorers
         private System.Windows.Forms.ColumnHeader columnType;
         private System.Windows.Forms.ColumnHeader columnSize;
         private System.Windows.Forms.ColumnHeader columnFolder;
+        private System.Windows.Forms.Button btnDeleteAll;
     }
 }
