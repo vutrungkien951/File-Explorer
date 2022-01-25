@@ -14,6 +14,8 @@ namespace WindowExplorers
 {
     public partial class Form1 : Form
     {
+        private string[] history = new string[100];
+        private int historyCount = 0;
         private ListViewColumnSorter lvwColumnSorter;
         private string[] selectedItems = new string[100];
         private int count = 0;
@@ -162,9 +164,18 @@ namespace WindowExplorers
         }
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            string path = e.Node.FullPath;
-            txtPath.Text = path;
-            updateListView(txtPath.Text);
+            try
+            {
+                history[historyCount] = txtPath.Text;
+                historyCount++;
+                string path = e.Node.FullPath;
+                txtPath.Text = path;
+                updateListView(txtPath.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
@@ -227,7 +238,9 @@ namespace WindowExplorers
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(listView.SelectedItems.Count == 1)
+            history[historyCount] = txtPath.Text;
+            historyCount++;
+            if (listView.SelectedItems.Count == 1)
             {
                 ListViewItem selectedItem = listView.SelectedItems[0];
                 if(selectedItem.SubItems[2].Text == "File Folder")
@@ -403,6 +416,41 @@ namespace WindowExplorers
                 }
             }
             
+        }
+
+        private void btBack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (historyCount < 0)
+                {
+                    return;
+                }
+                historyCount--;
+                updateListView(history[historyCount]);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
+
+        private void btFoward_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (historyCount < 0)
+                {
+                    return;
+                }
+                historyCount++;
+                updateListView(history[historyCount]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
