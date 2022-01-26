@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace WindowExplorers
 {
@@ -133,9 +134,17 @@ namespace WindowExplorers
                         }
 
 
-                        var bytes = fileInfo.Length / 1024;
-                        var size = bytes + " KB";
-                        item.SubItems.Add(size);
+                        long bytes = fileInfo.Length;
+                        string[] strKiTu = new string[] { "B", "KB", "MB", "GB" };
+                        int i = 0;
+                        while (bytes / 1024 != 0)
+                        {
+                            bytes = bytes / 1024;
+                            i++;
+                        }
+                        string str = Convert.ToString(bytes) + " " + strKiTu[i];
+                        
+                        item.SubItems.Add(str);
 
                         //Add icon 
                         if (!imageListSmallIcon.Images.ContainsKey(fileInfo.Extension))
@@ -235,18 +244,40 @@ namespace WindowExplorers
             }
 
         }
+        public static void OpenWithDefaultProgram(string path)
+        {
+            using Process myProcess = new Process();
+
+            myProcess.StartInfo.UseShellExecute = true;
+            // You can start any process, HelloWorld is a do-nothing example.
+            myProcess.StartInfo.FileName = path;
+            myProcess.StartInfo.CreateNoWindow = true;
+            myProcess.Start();
+        }
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             history[historyCount] = txtPath.Text;
             historyCount++;
+            ListViewItem selectedItem = listView.SelectedItems[0];
             if (listView.SelectedItems.Count == 1)
             {
-                ListViewItem selectedItem = listView.SelectedItems[0];
                 if(selectedItem.SubItems[2].Text == "File Folder")
                 {
                     var path = txtPath.Text + "\\" + selectedItem.SubItems[0].Text;
                     updateListView(path);
+                }
+                else
+                {
+                    try
+                    {
+                        Form1.OpenWithDefaultProgram(txtPath.Text + "\\" + selectedItem.SubItems[0].Text);
+
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }
@@ -275,6 +306,7 @@ namespace WindowExplorers
 
             // Perform the sort with these new sort options.
             this.listView.Sort();
+           
         }
 
         private static void CopyFilesRecursively(string sourcePath, string targetPath)
@@ -409,7 +441,7 @@ namespace WindowExplorers
                     return;
                 }
                 this.Hide();
-                FrmSearch f = new FrmSearch(tbSearchBar.Text);
+                FrmSearch f = new FrmSearch(tbSearchBar.Text.ToLower());
                 if (f.ShowDialog(this) == DialogResult.OK)
                 {
                     updateListView(txtPath.Text);

@@ -88,7 +88,7 @@ namespace WindowExplorers
                     {
                         DirectoryInfo dic = new DirectoryInfo(subFolder);
                         
-                        if (dic.Name.Contains(text))
+                        if (dic.Name.ToLower().Contains(text))
                         {
                             addFolderToListView(dic);
                         }
@@ -99,7 +99,7 @@ namespace WindowExplorers
                     {
                         FileInfo file = new FileInfo(subFile);
 
-                        if (file.Name.Contains(text))
+                        if (file.Name.ToLower().Contains(text))
                         {
                             addFileToListView(file, currentPath);
                         }
@@ -172,6 +172,11 @@ namespace WindowExplorers
 
                 }
             }
+        }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -71,7 +71,7 @@ namespace WindowExplorers
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(798, 56);
+            this.toolStrip1.Size = new System.Drawing.Size(698, 42);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -81,7 +81,7 @@ namespace WindowExplorers
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(109, 53);
+            this.toolStripButton1.Size = new System.Drawing.Size(91, 39);
             this.toolStripButton1.Text = "New Folder";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -90,7 +90,7 @@ namespace WindowExplorers
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(55, 53);
+            this.toolStripButton2.Size = new System.Drawing.Size(50, 39);
             this.toolStripButton2.Text = "Cut";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -99,7 +99,7 @@ namespace WindowExplorers
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(67, 53);
+            this.toolStripButton3.Size = new System.Drawing.Size(59, 39);
             this.toolStripButton3.Text = "Copy";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -108,7 +108,7 @@ namespace WindowExplorers
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(67, 53);
+            this.toolStripButton4.Size = new System.Drawing.Size(59, 39);
             this.toolStripButton4.Text = "Paste";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -117,7 +117,7 @@ namespace WindowExplorers
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(87, 53);
+            this.toolStripButton5.Size = new System.Drawing.Size(74, 39);
             this.toolStripButton5.Text = "Rename";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -127,15 +127,16 @@ namespace WindowExplorers
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(80, 53);
+            this.toolStripButton6.Size = new System.Drawing.Size(64, 39);
             this.toolStripButton6.Text = "Properties";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // btBack
             // 
-            this.btBack.Location = new System.Drawing.Point(0, 59);
+            this.btBack.Location = new System.Drawing.Point(0, 44);
+            this.btBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btBack.Name = "btBack";
-            this.btBack.Size = new System.Drawing.Size(55, 29);
+            this.btBack.Size = new System.Drawing.Size(48, 22);
             this.btBack.TabIndex = 1;
             this.btBack.Text = "<<";
             this.btBack.UseVisualStyleBackColor = true;
@@ -143,9 +144,10 @@ namespace WindowExplorers
             // 
             // btFoward
             // 
-            this.btFoward.Location = new System.Drawing.Point(61, 59);
+            this.btFoward.Location = new System.Drawing.Point(53, 44);
+            this.btFoward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btFoward.Name = "btFoward";
-            this.btFoward.Size = new System.Drawing.Size(55, 29);
+            this.btFoward.Size = new System.Drawing.Size(48, 22);
             this.btFoward.TabIndex = 2;
             this.btFoward.Text = ">>";
             this.btFoward.UseVisualStyleBackColor = true;
@@ -154,9 +156,9 @@ namespace WindowExplorers
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 63);
+            this.label1.Location = new System.Drawing.Point(107, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 20);
+            this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Path :";
             // 
@@ -164,17 +166,19 @@ namespace WindowExplorers
             // 
             this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPath.Location = new System.Drawing.Point(173, 59);
+            this.txtPath.Location = new System.Drawing.Point(151, 44);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(463, 27);
+            this.txtPath.Size = new System.Drawing.Size(406, 23);
             this.txtPath.TabIndex = 4;
             // 
             // btOpen
             // 
             this.btOpen.AllowDrop = true;
-            this.btOpen.Location = new System.Drawing.Point(645, 59);
+            this.btOpen.Location = new System.Drawing.Point(564, 44);
+            this.btOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btOpen.Name = "btOpen";
-            this.btOpen.Size = new System.Drawing.Size(55, 29);
+            this.btOpen.Size = new System.Drawing.Size(48, 22);
             this.btOpen.TabIndex = 5;
             this.btOpen.Text = "Open";
             this.btOpen.UseVisualStyleBackColor = true;
@@ -186,10 +190,11 @@ namespace WindowExplorers
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imageList1;
-            this.treeView.Location = new System.Drawing.Point(0, 93);
+            this.treeView.Location = new System.Drawing.Point(0, 70);
+            this.treeView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(223, 353);
+            this.treeView.Size = new System.Drawing.Size(196, 266);
             this.treeView.TabIndex = 6;
             this.treeView.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_BeforeCollapse);
             this.treeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_BeforeExpand);
@@ -215,12 +220,14 @@ namespace WindowExplorers
             this.Size});
             this.listView.HideSelection = false;
             this.listView.LargeImageList = this.imageListLargeIcon;
-            this.listView.Location = new System.Drawing.Point(229, 93);
+            this.listView.Location = new System.Drawing.Point(200, 70);
+            this.listView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(569, 353);
+            this.listView.Size = new System.Drawing.Size(498, 266);
             this.listView.SmallImageList = this.imageListSmallIcon;
             this.listView.TabIndex = 7;
             this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             this.listView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_ColumnClick);
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
@@ -263,19 +270,20 @@ namespace WindowExplorers
             this.tbSearchBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSearchBar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbSearchBar.Location = new System.Drawing.Point(706, 59);
+            this.tbSearchBar.Location = new System.Drawing.Point(618, 44);
+            this.tbSearchBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearchBar.Name = "tbSearchBar";
-            this.tbSearchBar.Size = new System.Drawing.Size(92, 27);
+            this.tbSearchBar.Size = new System.Drawing.Size(81, 23);
             this.tbSearchBar.TabIndex = 8;
             this.tbSearchBar.Text = "Search";
             this.tbSearchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearchBar_KeyDown);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(798, 451);
+            this.ClientSize = new System.Drawing.Size(698, 338);
             this.Controls.Add(this.tbSearchBar);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.treeView);
@@ -286,6 +294,7 @@ namespace WindowExplorers
             this.Controls.Add(this.btBack);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Explorer";
