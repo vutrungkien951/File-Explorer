@@ -100,7 +100,7 @@ namespace WindowExplorers
             this.Controls.Add(this.btnDeleteAll);
             this.Controls.Add(this.listView);
             this.Name = "FrmSearch";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search File/Folder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSearch_FormClosing);
             this.Load += new System.EventHandler(this.FrmSearch_Load);

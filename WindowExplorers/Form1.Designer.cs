@@ -53,6 +53,7 @@ namespace WindowExplorers
             this.imageListLargeIcon = new System.Windows.Forms.ImageList(this.components);
             this.imageListSmallIcon = new System.Windows.Forms.ImageList(this.components);
             this.tbSearchBar = new System.Windows.Forms.TextBox();
+            this.btnBackToParent = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,7 @@ namespace WindowExplorers
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(698, 42);
+            this.toolStrip1.Size = new System.Drawing.Size(691, 42);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -156,7 +157,7 @@ namespace WindowExplorers
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(107, 47);
+            this.label1.Location = new System.Drawing.Point(146, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 3;
@@ -166,10 +167,10 @@ namespace WindowExplorers
             // 
             this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPath.Location = new System.Drawing.Point(151, 44);
+            this.txtPath.Location = new System.Drawing.Point(189, 44);
             this.txtPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(406, 23);
+            this.txtPath.Size = new System.Drawing.Size(361, 23);
             this.txtPath.TabIndex = 4;
             // 
             // btOpen
@@ -223,7 +224,7 @@ namespace WindowExplorers
             this.listView.Location = new System.Drawing.Point(200, 70);
             this.listView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(498, 266);
+            this.listView.Size = new System.Drawing.Size(491, 266);
             this.listView.SmallImageList = this.imageListSmallIcon;
             this.listView.TabIndex = 7;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -273,17 +274,28 @@ namespace WindowExplorers
             this.tbSearchBar.Location = new System.Drawing.Point(618, 44);
             this.tbSearchBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSearchBar.Name = "tbSearchBar";
-            this.tbSearchBar.Size = new System.Drawing.Size(81, 23);
+            this.tbSearchBar.Size = new System.Drawing.Size(74, 23);
             this.tbSearchBar.TabIndex = 8;
             this.tbSearchBar.Text = "Search";
             this.tbSearchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearchBar_KeyDown);
+            // 
+            // btnBackToParent
+            // 
+            this.btnBackToParent.Location = new System.Drawing.Point(107, 44);
+            this.btnBackToParent.Name = "btnBackToParent";
+            this.btnBackToParent.Size = new System.Drawing.Size(33, 23);
+            this.btnBackToParent.TabIndex = 9;
+            this.btnBackToParent.Text = "↑";
+            this.btnBackToParent.UseVisualStyleBackColor = true;
+            this.btnBackToParent.Click += new System.EventHandler(this.btnBackToParent_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(698, 338);
+            this.ClientSize = new System.Drawing.Size(691, 338);
+            this.Controls.Add(this.btnBackToParent);
             this.Controls.Add(this.tbSearchBar);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.treeView);
@@ -330,6 +342,7 @@ namespace WindowExplorers
         private System.Windows.Forms.ColumnHeader Size;
         private System.Windows.Forms.ImageList imageListSmallIcon;
         private System.Windows.Forms.ImageList imageListLargeIcon;
+        private System.Windows.Forms.Button btnBackToParent;
     }
 }
 

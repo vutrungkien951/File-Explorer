@@ -87,7 +87,6 @@ namespace WindowExplorers
                     foreach (String subFolder in Directory.GetDirectories(currentPath))
                     {
                         DirectoryInfo dic = new DirectoryInfo(subFolder);
-                        
                         if (dic.Name.ToLower().Contains(text))
                         {
                             addFolderToListView(dic);
@@ -126,9 +125,9 @@ namespace WindowExplorers
                         search(subFolder);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message);
+                    
                 }
             }
         }

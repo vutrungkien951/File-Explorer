@@ -418,17 +418,16 @@ namespace WindowExplorers
                 MessageBox.Show("Please select 1 file to rename");
                 return;
             }
-               
 
             this.Hide();
             var path = txtPath.Text + "\\" + listView.SelectedItems[0].SubItems[0].Text;
             FrmRename f = new FrmRename(path, txtPath.Text);
-
+            
             if(f.ShowDialog(this) == DialogResult.OK)
             {
                 updateListView(txtPath.Text);
             }
-
+            
         }
 
         private void tbSearchBar_KeyDown(object sender, KeyEventArgs e)
@@ -480,6 +479,27 @@ namespace WindowExplorers
                 updateListView(history[historyCount]);
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBackToParent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DirectoryInfo dic = new DirectoryInfo(txtPath.Text);
+                
+                if(dic.Parent == null)
+                {
+                    MessageBox.Show("Current folder has no parent folder");
+                }
+                else
+                {
+                    updateListView(dic.Parent.FullName);
+                }
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
